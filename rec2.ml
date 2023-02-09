@@ -1,0 +1,9 @@
+let double x = 2*x;;
+let square x = x*x;;
+let twice f x = f (f x);;
+let quad = twice double;;
+let fourth = twice square;;
+let tripleFloat x = 3.0*.x;;
+let thrice f x = f(f(f(x)));;
+let composition f g x = f(g(x));;
+let div x y = x/y;;
