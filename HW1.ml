@@ -39,3 +39,24 @@ let rec slice lst i j =
 
 
 (*Q6*)
+
+let prime n =
+  match n with
+  | 1 -> false
+  | 2 -> true
+  | _ -> let rec not_divisible x = 
+    x * x > n || (n mod x <> 0 && not_divisible (x + 1))
+    in not_divisible 2;;
+
+let rec goldbachpair x = 
+  let rec comp y = 
+    if prime y && prime (x - y) then ( y, x - y)
+    else comp (y + 1)
+  in comp 2;;
+
+(*Q7*)
+
+
+  
+
+  
