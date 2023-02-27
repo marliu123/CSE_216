@@ -36,7 +36,22 @@ let rec slice lst i j =
   in sublist lst i j 0 [];;
 
 (*Q5*)
+let rec head lst =
+  match lst with
+  | hd::_ -> hd;;
 
+let rec equivs e lst =
+  let rec insert x acc =
+    match acc with
+    | [] -> [[x]]
+    | hd::tl ->
+        if e x (head hd) then (x::hd)::tl
+        else hd :: insert x tl in
+  let rec group lst acc =
+    match lst with
+    | [] -> acc
+    | hd::tl -> group tl (insert hd acc) in 
+    group lst [];;
 
 (*Q6*)
 
@@ -80,4 +95,15 @@ let rec polynomial lst n =
   | (x, y) :: xs -> x * (pow n y) + polynomial xs n;;
 
 (*Q10*)
-let rec powerset lst =  
+
+let rec fold_left y ac lst =
+  match lst with
+  | [] -> ac
+  | x :: xs -> fold_left y (y ac x) xs;;
+
+let rec powerset lst =
+  match lst with
+  | [] -> [[]]
+  | x :: xs ->
+      let ps = powerset xs in
+      fold_left (fun acc set -> (x :: set) :: set :: acc) [] ps;;
