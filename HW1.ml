@@ -56,7 +56,25 @@ let rec goldbachpair x =
 
 (*Q7*)
 
+let rec identical_on lst f g = 
+  let rec same lst = 
+    match lst with 
+    | [] -> true
+    | x :: xs -> if f x = g x then same xs
+    else false
+  in same lst;;
+  
+(*Q8*)
+
+let rec pairwisefilter cmp lst = 
+  match lst with 
+  | [] -> []
+  | [x] -> [x]
+  | x :: y :: xs -> cmp (x, y) :: pairwisefilter cmp xs;;
+
+(*Q9*)
+
+
 
   
-
   
