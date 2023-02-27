@@ -73,8 +73,11 @@ let rec pairwisefilter cmp lst =
   | x :: y :: xs -> cmp (x, y) :: pairwisefilter cmp xs;;
 
 (*Q9*)
+(*uses the pow function from Q1*)
+let rec polynomial lst n =  
+  match lst with 
+  | [] -> 0
+  | (x, y) :: xs -> x * (pow n y) + polynomial xs n;;
 
-
-
-  
-  
+(*Q10*)
+let rec powerset lst =  
