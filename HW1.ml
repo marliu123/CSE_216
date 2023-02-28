@@ -36,16 +36,12 @@ let rec slice lst i j =
   in sublist lst i j 0 [];;
 
 (*Q5*)
-let rec head lst =
-  match lst with
-  | hd::_ -> hd;;
-
 let rec equivs e lst =
   let rec insert x acc =
     match acc with
     | [] -> [[x]]
     | hd::tl ->
-        if e x (head hd) then (x::hd)::tl
+        if e x (List.hd hd) then (x::hd)::tl
         else hd :: insert x tl in
   let rec group lst acc =
     match lst with
