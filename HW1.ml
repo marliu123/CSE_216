@@ -37,17 +37,17 @@ let rec slice lst i j =
 
 (*Q5*)
 let rec equivs e lst =
-  let rec insert x acc =
-    match acc with
+  let rec equiv_group x ac =
+    match ac with
     | [] -> [[x]]
     | hd::tl ->
         if e x (List.hd hd) then (x::hd)::tl
-        else hd :: insert x tl in
-  let rec group lst acc =
+        else hd :: equiv_group x tl in
+  let rec group lst ac =
     match lst with
-    | [] -> acc
-    | hd::tl -> group tl (insert hd acc) in 
-    group lst [];;
+    | [] -> ac
+    | hd::tl -> group tl (equiv_group hd ac) 
+    in group lst [];;
 
 (*Q6*)
 
@@ -102,4 +102,4 @@ let rec powerset lst =
   | [] -> [[]]
   | x :: xs ->
       let ps = powerset xs in
-      fold_left (fun acc set -> (x :: set) :: set :: acc) [] ps;;
+      fold_left (fun ac set -> (x :: set) :: set :: ac) [] ps;;
